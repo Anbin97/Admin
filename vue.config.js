@@ -1,8 +1,8 @@
 const path = require("path");
 const devServer = require("./vue-cli/devServer");
+const plugin = require("./vue-cli/plugin");
 const { getEnv, isDev } = require("./vue-cli/env");
 const ENV = getEnv();
-
 const publicPath = ENV.VUE_APP_PUBLIC_PATH;
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
       patterns: [path.resolve(__dirname, "./src/assets/style/index.less")]
     }
   },
+  ...plugin,
   lintOnSave: true,
   devServer
   // devServer: {

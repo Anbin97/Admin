@@ -1,8 +1,20 @@
 import router from "./index"
 import store from "@/store"
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
 router.beforeEach((to, from, next) => {
-  setRouterTab(to)
+  NProgress.start()
+  if (to.fullPath === '/login') {
+    store.dispatch("app/editRouterTab", [])
+  } else {
+    setRouterTab(to)
+  }
   next()
+})
+router.afterEach(() => {
+  NProgress.done()
 })
 // 设置路由tab
 function setRouterTab(to) {

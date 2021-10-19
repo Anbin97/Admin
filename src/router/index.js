@@ -22,10 +22,16 @@ const asyncRouterMap = [
     ]
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login'),
+    meta: { hiddenTab: true }
+  },
+  {
     path: '/404',
     name: 404,
     component: () => import('@/views/404'),
-    meta: { hidden: true }
+    meta: { hiddenTab: true }
   },
   {
     path: '*',

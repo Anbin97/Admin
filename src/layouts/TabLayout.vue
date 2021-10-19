@@ -28,7 +28,7 @@
             </a-menu-item>
           </a-menu>
         </a-dropdown>
-        <div class="right-but-card">
+        <div class="right-but-card" @click="toLogout">
           <a-icon type="import" />
           Logout
         </div>
@@ -58,6 +58,17 @@ export default {
     }
   },
   methods: {
+    toLogout() {
+      const that = this
+      this.$confirm({
+        title: '提示',
+        content: '真的要注销登录吗 ?',
+        onOk () {
+          that.$router.push("login")
+        },
+        onCancel () { }
+      })
+    },
     closable(val) {
       return val !== "home"
     },
@@ -101,7 +112,7 @@ export default {
       const name = this.$route.fullPath
       const arr = [this.router[0]]
       this.routerTab.forEach(item => {
-        item.path === name && (arr.push(item))
+        (item.path!== '/home' && item.path === name) && (arr.push(item))
       })
       this.$store.dispatch("app/editRouterTab", arr)
     }

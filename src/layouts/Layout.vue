@@ -136,6 +136,7 @@ export default {
       .ant-menu-item{
         margin: 0;
         height: 50px;
+        line-height: 50px;
         a{
           color: #fff;
         }
@@ -144,7 +145,7 @@ export default {
         height: 50px;
         line-height: 50px;
       }
-      .ant-menu-submenu-active,.ant-menu-item-active{
+      .ant-menu-submenu-active,.ant-menu-item-active,.ant-menu-item-selected{
         background: @leftSideActiveBackground;
       }
       .ant-menu-submenu-open{
